@@ -40,15 +40,15 @@ document.getElementById("").addEventListener("click", () => {
                             arrayData.push(dateTime[0]);
                             arrayData.push(dateTime[1]);
                             //push main temp
-                            arrayData.push(data.main.temp);
+                            arrayData.push(`${data.main.temp} °C`);
                             //push cloudiness description
                             arrayData.push(data.weather[0].description);
                             //push humidity
-                            arrayData.push(data.main.humidity);
+                            arrayData.push(`${data.main.humidity} %`);
                             //push pressure
-                            arrayData.push(data.main.pressure);
+                            arrayData.push(`${data.main.pressure} hpa`);
                             //push wind speed
-                            arrayData.push(data.wind.speed);
+                            arrayData.push(`${data.wind.speed} m/s`);
                         }
                     }
                 });
