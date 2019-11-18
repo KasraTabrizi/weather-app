@@ -2,7 +2,7 @@ const apiKey = "ef560ab659e3a9522467daea187b0400";
 let gentID = "2797657";
 let cityId = 0;
 let apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
-let cityName = "Amsterdam";
+let cityName = "Gent";
 let cityObj;
 const arrayData = [];
 
@@ -28,6 +28,22 @@ xmlhttp.onreadystatechange = function() {
                 arrayData.push(weatherObj.city.country);
                 for (data of weatherObj.list) {
                     console.log(data);
+                    let dateTime = data.dt_txt.split(" ");
+                    if (dateTime[1] === "18:00:00") {
+                        //push date and time
+                        arrayData.push(dateTime[0]);
+                        arrayData.push(dateTime[1]);
+                        //push main temp
+                        arrayData.push(data.main.temp);
+                        //push cloudiness description
+                        arrayData.push(data.weather[0].description);
+                        //push humidity
+                        arrayData.push(data.main.humidity);
+                        //push pressure
+                        arrayData.push(data.main.pressure);
+                        //push wind speed
+                        arrayData.push(data.wind.speed);
+                    }
                 }
             });
         console.log(arrayData);
