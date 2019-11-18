@@ -7,11 +7,11 @@ let cityObj;
 const arrayData = [];
 
 
-document.getElementById("").addEventListener("click", () => {
+document.getElementById("searchButton").addEventListener("click", () => {
 
     //get city name from input text box
-    let inputText = document.getElementById("").value;
-
+    let inputText = document.getElementById("searchTerm").value;
+    console.log(inputText);
     //parse json file with all the citynames and id
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -30,29 +30,36 @@ document.getElementById("").addEventListener("click", () => {
                 .then(res => res.json())
                 .then(weatherObj => {
                     console.log(weatherObj);
+                    document.getElementById("cityname").innerHTML = `${weatherObj.city.name}, ${weatherObj.city.country}`;
                     arrayData.push(weatherObj.city.name);
                     arrayData.push(weatherObj.city.country);
+                    let i = 0;
                     for (data of weatherObj.list) {
                         console.log(data);
                         let dateTime = data.dt_txt.split(" ");
                         if (dateTime[1] === "18:00:00") {
                             //push date and time
-                            arrayData.push(dateTime[0]);
-                            arrayData.push(dateTime[1]);
+                            document.getElementsByClassName("datum")[i].innerHTML = `${dateTime[0]}`;
+                            document.getElementsByClassName("hour")[i].innerHTML = `${dateTime[1]}`;
+                            //get image icon
+                            let icon = data.weather[0].icon;
+                            console.log(icon);
+                            document.getElementsByTagName("img")[i].src = `http://www.openweathermap.org/img/w/${icon}.png`;
                             //push main temp
-                            arrayData.push(`${data.main.temp} °C`);
+                            document.getElementsByClassName("maintemp")[i].innerHTML = `${data.main.temp} °C`;
                             //push cloudiness description
-                            arrayData.push(data.weather[0].description);
+                            document.getElementsByClassName("cloud")[i].innerHTML = data.weather[0].description;
                             //push humidity
-                            arrayData.push(`${data.main.humidity} %`);
+                            document.getElementsByClassName("humidity")[i].innerHTML = `${data.main.humidity} %`;
                             //push pressure
-                            arrayData.push(`${data.main.pressure} hpa`);
+                            document.getElementsByClassName("pressure")[i].innerHTML = `${data.main.pressure} hpa`;
                             //push wind speed
-                            arrayData.push(`${data.wind.speed} m/s`);
+                            document.getElementsByClassName("wind")[i].innerHTML = `${data.wind.speed} m/s`;
+                            //arrayData.push(`${data.wind.speed} m/s`);
+                            i++;
                         }
                     }
                 });
-            console.log(arrayData);
         }
     };
     xmlhttp.open("GET", "script/citylist.json", true);
