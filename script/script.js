@@ -4,6 +4,7 @@ let cityId = 0;
 let apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
 let cityName = "Amsterdam";
 let cityObj;
+const arrayData = [];
 
 //parse json file with all the citynames and id
 var xmlhttp = new XMLHttpRequest();
@@ -21,11 +22,15 @@ xmlhttp.onreadystatechange = function() {
         //Fetch data from openweathermap API
         fetch(apiLink)
             .then(res => res.json())
-            .then(weatherObj => console.log(weatherObj));
-
-
-
-
+            .then(weatherObj => {
+                console.log(weatherObj);
+                arrayData.push(weatherObj.city.name);
+                arrayData.push(weatherObj.city.country);
+                for (data of weatherObj.list) {
+                    console.log(data);
+                }
+            });
+        console.log(arrayData);
     }
 };
 xmlhttp.open("GET", "script/citylist.json", true);
