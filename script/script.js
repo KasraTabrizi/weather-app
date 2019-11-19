@@ -27,7 +27,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
             if (!checkCity) {
                 alert("City not filled in, typed in or it doesn't exist");
             }
-            apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
+            apiLink = `https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
             //Fetch data from openweathermap API
             fetch(apiLink)
                 .then(res => res.json())
