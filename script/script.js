@@ -1,8 +1,6 @@
 const apiKey = "ef560ab659e3a9522467daea187b0400";
-let gentID = "2797657";
 let cityId = 0;
 let apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
-let cityName = "Gent";
 let cityObj;
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let locationImage = document.createElement('img');
@@ -12,14 +10,14 @@ locationImage.src = "https://img.icons8.com/pastel-glyph/32/ffffff/place-marker.
 document.getElementById("searchButton").addEventListener("click", () => {
     let checkCity = false;
     //get city name from input text box
-    let inputText = document.getElementById("searchTerm").value;
+    let cityName = document.getElementById("searchTerm").value;
     //parse json file with all the citynames and id
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cityObj = JSON.parse(this.responseText);
             for (element of cityObj) {
-                if (element.name == inputText) {
+                if (element.name == cityName) {
                     cityId = String(element.id);
                     checkCity = true;
                 }
@@ -28,8 +26,6 @@ document.getElementById("searchButton").addEventListener("click", () => {
                 alert("City doesn't exist or is mistyped");
             }
             apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
-            console.log(apiLink);
-
             //Fetch data from openweathermap API
             fetch(apiLink)
                 .then(res => res.json())
@@ -64,6 +60,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
                             // document.getElementById("cityname").appendChild(locationImage);
                             i++;
                         }
+                        //make animation that makes the box visible by icrementing the opacity.
                         for (let i = 0; i < 5; i++) {
                             document.querySelectorAll(".box")[i].style = "visibility: visible";
                             document.querySelectorAll(".box")[i].animate([
