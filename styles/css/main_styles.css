@@ -9,6 +9,14 @@ body {
   height: 100vh;
   text-align: center;
 }
+#wrapper h1 {
+  color: #FEFFFE;
+  font-size: 2.5em;
+}
+#wrapper h2 {
+  color: #1D2D44;
+  font-size: 2.2em;
+}
 
 #wrapperbox {
   display: flex;
