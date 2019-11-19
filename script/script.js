@@ -50,7 +50,6 @@ document.getElementById("searchButton").addEventListener("click", () => {
                             document.getElementsByClassName("hour")[i].innerHTML = `${dateTime[1].slice(0,2)} O'clock`;
                             //get image icon
                             let icon = data.weather[0].icon;
-                            console.log(icon);
                             document.getElementsByTagName("img")[i].src = `http://www.openweathermap.org/img/w/${icon}.png`;
                             //push main temp
                             document.getElementsByClassName("maintemp")[i].innerHTML = `${data.main.temp} °C`;
