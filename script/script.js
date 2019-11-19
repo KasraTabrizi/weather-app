@@ -8,11 +8,11 @@ const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", 
 let locationImage = document.createElement('img');
 locationImage.src = "https://img.icons8.com/pastel-glyph/32/ffffff/place-marker.png";
 
-document.getElementById("searchButton").addEventListener("click", () => {
 
+document.getElementById("searchButton").addEventListener("click", () => {
+    let checkCity = false;
     //get city name from input text box
     let inputText = document.getElementById("searchTerm").value;
-    console.log(inputText);
     //parse json file with all the citynames and id
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -21,7 +21,11 @@ document.getElementById("searchButton").addEventListener("click", () => {
             for (element of cityObj) {
                 if (element.name == inputText) {
                     cityId = String(element.id);
+                    checkCity = true;
                 }
+            }
+            if (!checkCity) {
+                alert("City doesn't exist or is mistyped");
             }
             apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
             console.log(apiLink);
