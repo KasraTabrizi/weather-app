@@ -53,6 +53,7 @@ body {
 }
 
 .box {
+  visibility: hidden;
   color: white;
   background-color: rgba(111, 169, 228, 0.2);
   border-radius: 15px;

@@ -60,6 +60,17 @@ document.getElementById("searchButton").addEventListener("click", () => {
                             // document.getElementById("cityname").appendChild(locationImage);
                             i++;
                         }
+                        for (let i = 0; i < 5; i++) {
+                            document.querySelectorAll(".box")[i].style = "visibility: visible";
+                            document.querySelectorAll(".box")[i].animate([
+                                // keyframes
+                                { opacity: '0%' },
+                                { opacity: '100%' }
+                            ], {
+                                // timing options
+                                duration: 500,
+                            });
+                        }
                     }
                 });
         }
