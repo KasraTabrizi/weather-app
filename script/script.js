@@ -20,6 +20,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
                 if (element.name == cityName) {
                     cityId = String(element.id);
                     checkCity = true;
+                    break;
                 }
             }
             if (!checkCity) {
@@ -36,7 +37,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
                     for (data of weatherObj.list) {
                         console.log(data);
                         let dateTime = data.dt_txt.split(" ");
-                        if (dateTime[1] === "12:00:00") {
+                        if (dateTime[1] === "18:00:00") {
                             //push date and time
                             document.getElementsByClassName("datum")[i].innerHTML = `${dateTime[0]}`;
                             let date = new Date(dateTime[0]);
@@ -56,7 +57,6 @@ document.getElementById("searchButton").addEventListener("click", () => {
                             document.getElementsByClassName("pressure")[i].innerHTML = `${data.main.pressure} hpa`;
                             //push wind speed
                             document.getElementsByClassName("wind")[i].innerHTML = `${data.wind.speed} m/s`;
-
                             // document.getElementById("cityname").appendChild(locationImage);
                             i++;
                         }
