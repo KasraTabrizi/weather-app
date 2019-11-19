@@ -1,0 +1,59 @@
+body {
+  font-family: "Calistoga", cursive;
+  background: #020024;
+  background: linear-gradient(0deg, #020024 0%, #3a0b87 0%, #00d4ff 100%);
+}
+
+#wrapper {
+  margin: 50px auto;
+  height: 100vh;
+  text-align: center;
+}
+
+#wrapperbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.box {
+  background-color: white;
+  border: 1px solid #D7EBBA;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 20px 5px 20px 5px;
+  width: 200px;
+  transition: 0.2s ease-in;
+}
+.box:hover {
+  transform: scale(1.1);
+}
+.box .maintemp {
+  font-size: 1.5em;
+}
+.box .customers {
+  border-collapse: collapse;
+  width: 100%;
+  width: 200px;
+  font-size: 0.8em;
+}
+.box .customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.box .customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.box .customers tr:hover {
+  background-color: #ddd;
+}
+.box .customers td,
+.box .customers th {
+  border: 1px solid #ddd;
+  padding: 2px;
+}
+
+/*# sourceMappingURL=main_styles.css.map */
