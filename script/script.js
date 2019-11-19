@@ -16,15 +16,20 @@ document.getElementById("searchButton").addEventListener("click", () => {
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             cityObj = JSON.parse(this.responseText);
-            for (element of cityObj) {
-                if (element.name == cityName) {
-                    cityId = String(element.id);
-                    checkCity = true;
-                    break;
+            if (cityName !== "") {
+                for (element of cityObj) {
+                    if (element.name == cityName) {
+                        cityId = String(element.id);
+                        checkCity = true;
+                        break;
+                    }
                 }
+            } else {
+                checkCity = false;
             }
+
             if (!checkCity) {
-                alert("City doesn't exist or is mistyped");
+                alert("City not filled in, typed in or it doesn't exist");
             }
             apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
             //Fetch data from openweathermap API
