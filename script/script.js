@@ -4,7 +4,7 @@ let cityId = 0;
 let apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
 let cityName = "Gent";
 let cityObj;
-const arrayData = [];
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
 document.getElementById("searchButton").addEventListener("click", () => {
@@ -31,8 +31,6 @@ document.getElementById("searchButton").addEventListener("click", () => {
                 .then(weatherObj => {
                     console.log(weatherObj);
                     document.getElementById("cityname").innerHTML = `${weatherObj.city.name}, ${weatherObj.city.country}`;
-                    arrayData.push(weatherObj.city.name);
-                    arrayData.push(weatherObj.city.country);
                     let i = 0;
                     for (data of weatherObj.list) {
                         console.log(data);
@@ -40,7 +38,9 @@ document.getElementById("searchButton").addEventListener("click", () => {
                         if (dateTime[1] === "15:00:00") {
                             //push date and time
                             document.getElementsByClassName("datum")[i].innerHTML = `${dateTime[0]}`;
-                            document.getElementsByClassName("hour")[i].innerHTML = `${dateTime[1]}`;
+                            let date = new Date(dateTime[0]);
+                            document.getElementsByClassName("nameday")[i].innerHTML = `${days[date.getDay()]}`;
+                            document.getElementsByClassName("hour")[i].innerHTML = `${dateTime[1].slice(0,2)} O'clock`;
                             //get image icon
                             let icon = data.weather[0].icon;
                             console.log(icon);
@@ -55,7 +55,6 @@ document.getElementById("searchButton").addEventListener("click", () => {
                             document.getElementsByClassName("pressure")[i].innerHTML = `${data.main.pressure} hpa`;
                             //push wind speed
                             document.getElementsByClassName("wind")[i].innerHTML = `${data.wind.speed} m/s`;
-                            //arrayData.push(`${data.wind.speed} m/s`);
                             i++;
                         }
                     }
