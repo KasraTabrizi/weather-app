@@ -57,7 +57,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
                             //push wind speed
                             document.getElementsByClassName("wind")[i].innerHTML = `${data.wind.speed} m/s`;
 
-                            document.getElementById("cityname").appendChild(locationImage);
+                            // document.getElementById("cityname").appendChild(locationImage);
                             i++;
                         }
                     }
