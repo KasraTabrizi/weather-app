@@ -36,7 +36,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
                     for (data of weatherObj.list) {
                         console.log(data);
                         let dateTime = data.dt_txt.split(" ");
-                        if (dateTime[1] === "15:00:00") {
+                        if (dateTime[1] === "12:00:00") {
                             //push date and time
                             document.getElementsByClassName("datum")[i].innerHTML = `${dateTime[0]}`;
                             let date = new Date(dateTime[0]);

@@ -1,7 +1,12 @@
 body {
     font-family: 'Alata', sans-serif;
+    //font-family: 'Oswald', sans-serif;
     background: rgb(2, 0, 36);
     background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(58, 11, 135, 1) 0%, rgba(0, 212, 255, 1) 100%);
+}
+
+*:focus {
+    outline: none;
 }
 
 #wrapper {

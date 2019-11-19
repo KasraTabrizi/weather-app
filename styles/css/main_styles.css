@@ -4,6 +4,10 @@ body {
   background: linear-gradient(0deg, #020024 0%, #3a0b87 0%, #00d4ff 100%);
 }
 
+*:focus {
+  outline: none;
+}
+
 #wrapper {
   margin: 20px auto;
   height: 100vh;
