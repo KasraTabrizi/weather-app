@@ -16,6 +16,31 @@ body {
         color: #1D2D44;
         font-size: 2.2em;
     }
+    #searchTerm {
+        color: white;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding-left: 5px;
+    }
+    #searchButton {
+        font-weight: 700;
+        color: white;
+        background: transparent;
+        border: none;
+        border: 2px solid white;
+        padding: 5px;
+        border-radius: 15px;
+        transition: 0.2s ease-in;
+        &:hover {
+            background-color: white;
+            color: black;
+            //transform: translateY(2px);
+        }
+        &:active {
+            transform: translateY(4px);
+        }
+    }
 }
 
 #wrapperbox {
