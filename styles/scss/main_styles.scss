@@ -5,15 +5,15 @@ body {
 }
 
 #wrapper {
-    margin: 50px auto;
+    margin: 20px auto;
     height: 100vh;
     text-align: center;
     h1 {
         color: #FEFFFE;
-        font-size: 2.5em;
+        font-size: 3em;
     }
     h2 {
-        color: #1D2D44;
+        color: #FEFFFE;
         font-size: 2.1em;
     }
     #searchTerm {
@@ -23,7 +23,11 @@ body {
         border-bottom: 1px solid rgba(255, 255, 255, 0.5);
         padding-left: 5px;
     }
+    #searchTerm::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
     #searchButton {
+        margin-right: 20px;
         font-weight: 700;
         color: white;
         background: transparent;
@@ -65,7 +69,7 @@ body {
     transition: 0.2s ease-in;
     &:hover {
         transform: scale(1.1);
-        //box-shadow: 0px 7px 10px 6px rgba(222, 202, 222, 0.88);
+        box-shadow: 0px 2px 20px 0px rgba(255, 255, 255, 0.5);
     }
     .maintemp {
         font-size: 1.5em;
@@ -82,10 +86,9 @@ body {
             //background-color: #4CAF50;
             color: white;
         }
-        td,
-        th {
-            //border: 1px solid #ddd;
-            padding: 4px;
+        td {
+            //order-bottom: 1px solid rgba(255, 255, 255, 0.226);
+            padding: 8px;
         }
     }
 }

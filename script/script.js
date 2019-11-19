@@ -5,7 +5,8 @@ let apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&unit
 let cityName = "Gent";
 let cityObj;
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
+let locationImage = document.createElement('img');
+locationImage.src = "https://img.icons8.com/pastel-glyph/32/ffffff/place-marker.png";
 
 document.getElementById("searchButton").addEventListener("click", () => {
 
@@ -55,6 +56,8 @@ document.getElementById("searchButton").addEventListener("click", () => {
                             document.getElementsByClassName("pressure")[i].innerHTML = `${data.main.pressure} hpa`;
                             //push wind speed
                             document.getElementsByClassName("wind")[i].innerHTML = `${data.wind.speed} m/s`;
+
+                            document.getElementById("cityname").appendChild(locationImage);
                             i++;
                         }
                     }
