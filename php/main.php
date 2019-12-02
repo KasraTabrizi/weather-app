@@ -1,4 +1,5 @@
 <?php
+//echo '<div id="wrapper"><h1>Weather App</h1></div>';
 
 define("apiKey","ef560ab659e3a9522467daea187b0400"); //declare constant variable for the API key
 define("days",["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] ); //declare constant variable for the days of the week
@@ -23,6 +24,7 @@ if (isset($_POST["cityname"])) { //get the cityname from the form
         break;
         }
     }
+
     $apiLink = 'http://api.openweathermap.org/data/2.5/forecast?id=' . $cityId . '&units=metric&APPID=' . apiKey;
     //fetch data from the weather app
     $json_data = file_get_contents($apiLink);
@@ -36,4 +38,9 @@ if (isset($_POST["cityname"])) { //get the cityname from the form
     }
     //echo var_dump($user_data['city']['id']);
 }
+
 ?>
+
+<style>
+<?php include '../styles/css/main_styles.css'; ?>
+</style>
