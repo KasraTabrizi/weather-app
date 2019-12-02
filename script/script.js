@@ -15,6 +15,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
             cityObj = JSON.parse(this.responseText);
             if (cityName !== "") {
                 for (element of cityObj) {
+
                     if (element.name == cityName) {
                         cityId = String(element.id);
                         checkCity = true;
