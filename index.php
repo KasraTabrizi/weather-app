@@ -8,7 +8,7 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="styles/css/main_styles.css"> -->
+    <link rel="stylesheet" href="styles/css/main_styles.css">
 </head>
 
 <body>
@@ -16,11 +16,13 @@
         <h1>Weather App</h1>
         <div id="Search">
             <div class="searchbox">
-                <input type="text" id="searchTerm" placeholder="Enter your city">
-                <button id="searchButton">Search</button>
+            <form action="/php/main.php" method="post" target="_blank">
+                <input type="text" id="searchTerm" name="cityname" placeholder="Enter your city">
+                <button type="submit value="Submit" id="searchButton">Search</button>
+                </form>
             </div>
         </div>
-
+        
         <!-- <h2 id="cityname"></h2>
         <div id="wrapperbox">
             <div class="box">
@@ -160,9 +162,10 @@
             </div>
         </div> -->
     </div>
+    
+    <!-- <script src="script/citylist.json"></script>
+    <script src="script/script.js"></script> -->
     <?php include 'php/main.php'; ?>
-    <script src="script/citylist.json"></script>
-    <script src="script/script.js"></script>
 </body>
 
 </html>
