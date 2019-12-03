@@ -24,7 +24,6 @@
         </div>
     <?php
         define("apiKey","ef560ab659e3a9522467daea187b0400"); //declare constant variable for the API key
-        define("days",["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] ); //declare constant variable for the days of the week
         $cityId = ''; 
         $apiLink = 'http://api.openweathermap.org/data/2.5/forecast?id=' . $cityId . '&units=metric&APPID=' . apiKey;
 
