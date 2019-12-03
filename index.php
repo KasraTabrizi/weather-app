@@ -63,55 +63,40 @@
                 $dayName = date('l', strtotime($split[0]));
                 if ( $split[1] == "15:00:00" ){ //only print when the time is equal to the desired time.
                     echo '<div class="box">';
-                    echo '<h3 class="datum">';
-                    echo $split[0];
-                    echo '</h3>';
-                    echo '<h3 class="nameday">';
-                    echo $dayName;
-                    echo '</h3>';
+                    echo '<h3 class="datum">'. $split[0] . '</h3>';
+                    echo '<h3 class="nameday">' . $dayName . '</h3>';
 
                     echo '<div class="day">';
-                    echo'<p class="hour">';
-                    echo $split[1]; 
-                    echo'</p>'; //end class hour
+                    echo'<p class="hour">' . $split[1] . '</p>';
+
                     $iconName = $user_data['list'][strval($x)]['weather']['0']['icon'];
                     $iconLink = 'http://www.openweathermap.org/img/w/' . $iconName . '.png';
                     echo '<div class="image">';
                     echo '<img src=' . $iconLink . ' alt="icon">';
                     echo '</div>'; //end class image
                     echo '</div>'; //end class day
-                    echo '<p class="maintemp">';
-                    echo $user_data['list'][strval($x)]['main']['temp'];
-                    echo '°C</p>'; // end class maintemp
-                    
+                    echo '<p class="maintemp">' . $user_data['list'][strval($x)]['main']['temp'] . '°C</p>';
+
                     echo '<table class="customers">';
 
                     echo '<tr>';
                     echo '<td>Cloudiness</td>';
-                    echo '<td class="cloud">';
-                    echo $user_data['list'][strval($x)]['weather']['0']['description'];
-                    echo '</td>';
+                    echo '<td class="cloud">' . $user_data['list'][strval($x)]['weather']['0']['description'] . '</td>';
                     echo '</tr>'; //end tr 1
                     
                     echo '<tr>';
                     echo '<td>Humidity</td>';
-                    echo '<td class="humidity">';
-                    echo $user_data['list'][strval($x)]['main']['humidity'];
-                    echo '%</td>';
+                    echo '<td class="humidity">' . $user_data['list'][strval($x)]['main']['humidity'] . '%</td>';
                     echo '</tr>'; //end tr 2
 
                     echo '<tr>';
                     echo '<td>Pressure</td>';
-                    echo '<td class="pressure">';
-                    echo $user_data['list'][strval($x)]['main']['pressure'];
-                    echo 'hpa</td>';
+                    echo '<td class="pressure">' . $user_data['list'][strval($x)]['main']['pressure'] . 'hpa</td>';
                     echo '</tr>'; //end tr 3
 
                     echo '<tr>';
                     echo '<td>Wind</td>';
-                    echo '<td class="wind">';
-                    echo $user_data['list'][strval($x)]['wind']['speed'];
-                    echo 'm/s</td>';
+                    echo '<td class="wind">' . $user_data['list'][strval($x)]['wind']['speed'] . 'm/s</td>';
                     echo '</tr>'; //end tr 4
 
                     echo '</table>'; //end table element
