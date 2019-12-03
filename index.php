@@ -16,7 +16,7 @@
         <h1>Weather App</h1>
         <div id="Search">
             <div class="searchbox">
-            <form action="" method="post" target="_blank">
+            <form action="" method="post" action="index.php">
                 <input type="text" id="searchTerm" name="cityname" placeholder="Enter your city">
                 <button type="submit" value="Submit" id="searchButton">Search</button>
                 </form>
