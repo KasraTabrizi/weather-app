@@ -18,7 +18,7 @@
             <div class="searchbox">
             <form action="" method="post" target="_blank">
                 <input type="text" id="searchTerm" name="cityname" placeholder="Enter your city">
-                <button type="submit value="Submit" id="searchButton">Search</button>
+                <button type="submit" value="Submit" id="searchButton">Search</button>
                 </form>
             </div>
         </div>
