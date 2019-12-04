@@ -93,7 +93,6 @@
                     } 
                 }
             }
-            
                 function generateTR($dataName, $data){
                     $unit = '';
                     switch($dataName){
