@@ -84,27 +84,7 @@
                     generateTR('Humidity', $user_data['list'][strval($x)]['main']['humidity']);
                     generateTR('Pressure', $user_data['list'][strval($x)]['main']['pressure']);
                     generateTR('Wind', $user_data['list'][strval($x)]['wind']['speed']);
-
-                    // echo '<tr>';
-                    // echo '<td>Cloudiness</td>';
-                    // echo '<td class="cloud">' . $user_data['list'][strval($x)]['weather']['0']['description'] . '</td>';
-                    // echo '</tr>'; //end tr 1
                     
-                    // echo '<tr>';
-                    // echo '<td>Humidity</td>';
-                    // echo '<td class="humidity">' . $user_data['list'][strval($x)]['main']['humidity'] . '%</td>';
-                    // echo '</tr>'; //end tr 2
-
-                    // echo '<tr>';
-                    // echo '<td>Pressure</td>';
-                    // echo '<td class="pressure">' . $user_data['list'][strval($x)]['main']['pressure'] . 'hpa</td>';
-                    // echo '</tr>'; //end tr 3
-
-                    // echo '<tr>';
-                    // echo '<td>Wind</td>';
-                    // echo '<td class="wind">' . $user_data['list'][strval($x)]['wind']['speed'] . 'm/s</td>';
-                    // echo '</tr>'; //end tr 4
-
                     echo '</table>'; //end table element
                     echo '</div>'; //end div class box
                 } 
