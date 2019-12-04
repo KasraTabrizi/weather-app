@@ -48,13 +48,13 @@
 
             $user_data = json_decode($json_data, true); //decode json into an array
             $user_data_length = count($user_data['list']); //get the lenght of the list
-
-            //HTML TABLE SECTION
-            echo '<h2 id="cityname">';
-            echo $user_data['city']['name'] . ', ' . $user_data['city']['country'];
-            echo '</h2>';
-
-            echo '<div id="wrapperbox">';
+    ?>
+            <!-- HTML TABLE SECTION -->
+            <h2 id="cityname"><?php echo $user_data['city']['name'] . ', ' . $user_data['city']['country']; ?></h2>
+    
+            <div id="wrapperbox">
+            
+            <?php
             //for loop
             for ($x = 0; $x < $user_data_length; $x++) {
                 //split dt_txt into date and time = $split[0] = date & $split[1] = time
@@ -62,6 +62,7 @@
                 $split = explode(" ", $datum);
                 $dayName = date('l', strtotime($split[0]));
                 if ( $split[1] == "15:00:00" ){ //only print when the time is equal to the desired time.
+
                     echo '<div class="box">';
                     echo '<h3 class="datum">'. $split[0] . '</h3>';
                     echo '<h3 class="nameday">' . $dayName . '</h3>';
@@ -79,33 +80,62 @@
 
                     echo '<table class="customers">';
 
-                    echo '<tr>';
-                    echo '<td>Cloudiness</td>';
-                    echo '<td class="cloud">' . $user_data['list'][strval($x)]['weather']['0']['description'] . '</td>';
-                    echo '</tr>'; //end tr 1
+                    generateTR('Cloudiness', $user_data['list'][strval($x)]['weather']['0']['description']);
+                    generateTR('Humidity', $user_data['list'][strval($x)]['main']['humidity']);
+                    generateTR('Pressure', $user_data['list'][strval($x)]['main']['pressure']);
+                    generateTR('Wind', $user_data['list'][strval($x)]['wind']['speed']);
+
+                    // echo '<tr>';
+                    // echo '<td>Cloudiness</td>';
+                    // echo '<td class="cloud">' . $user_data['list'][strval($x)]['weather']['0']['description'] . '</td>';
+                    // echo '</tr>'; //end tr 1
                     
-                    echo '<tr>';
-                    echo '<td>Humidity</td>';
-                    echo '<td class="humidity">' . $user_data['list'][strval($x)]['main']['humidity'] . '%</td>';
-                    echo '</tr>'; //end tr 2
+                    // echo '<tr>';
+                    // echo '<td>Humidity</td>';
+                    // echo '<td class="humidity">' . $user_data['list'][strval($x)]['main']['humidity'] . '%</td>';
+                    // echo '</tr>'; //end tr 2
 
-                    echo '<tr>';
-                    echo '<td>Pressure</td>';
-                    echo '<td class="pressure">' . $user_data['list'][strval($x)]['main']['pressure'] . 'hpa</td>';
-                    echo '</tr>'; //end tr 3
+                    // echo '<tr>';
+                    // echo '<td>Pressure</td>';
+                    // echo '<td class="pressure">' . $user_data['list'][strval($x)]['main']['pressure'] . 'hpa</td>';
+                    // echo '</tr>'; //end tr 3
 
-                    echo '<tr>';
-                    echo '<td>Wind</td>';
-                    echo '<td class="wind">' . $user_data['list'][strval($x)]['wind']['speed'] . 'm/s</td>';
-                    echo '</tr>'; //end tr 4
+                    // echo '<tr>';
+                    // echo '<td>Wind</td>';
+                    // echo '<td class="wind">' . $user_data['list'][strval($x)]['wind']['speed'] . 'm/s</td>';
+                    // echo '</tr>'; //end tr 4
 
                     echo '</table>'; //end table element
                     echo '</div>'; //end div class box
                 } 
             }
-            echo '</div>'; //end wrapperbox
         }
         ?>
+        <?php 
+            function generateTR($dataName, $data){
+                $unit = '';
+                switch($dataName){
+                    case 'Cloudiness':
+                    break;
+                    case 'Humidity':
+                        $unit = '%';
+                    break;
+                    case 'Pressure':
+                        $unit = 'hpa';
+                    break;
+                    case 'Wind':
+                        $unit = 'm/s';
+                    break;
+                    default:
+                    break;
+                }
+                echo '<tr>';
+                echo '<td>' . $dataName . '</td>';
+                echo '<td class="$dataName">' . $data . $unit .'</td>';
+                echo '</tr>'; //end tr 4
+            }
+        ?>
+        </div>
     </div>
 </body>
 
