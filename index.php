@@ -22,37 +22,38 @@
                 </form>
             </div>
         </div>
-    <?php
-        define("apiKey","ef560ab659e3a9522467daea187b0400"); //declare constant variable for the API key
-        $cityId = ''; 
-        $apiLink = 'http://api.openweathermap.org/data/2.5/forecast?id=' . $cityId . '&units=metric&APPID=' . apiKey;
+        <?php
+            define("apiKey","ef560ab659e3a9522467daea187b0400"); //declare constant variable for the API key
+            $cityId = ''; 
+            $apiLink = '';
 
-        if (isset($_POST["cityname"])) { //get the cityname from the form
-            $cityName = $_POST["cityname"];
-            //fetch data from citylist.json to find the id of the city
-            $jsonCityList = file_get_contents('script/citylist.json');
-            
-            //fetch jsoncitylist and convert it into an array
-            $arrayCityList = json_decode($jsonCityList, true); 
-            //echo var_dump($arrayCityList);
-            //loop through all the citynames untill you find a match and then return id
-            foreach( $arrayCityList as $value){
-                if ($value['name'] == $cityName){
-                    $cityId = $value['id'];
-                break;
+            if (isset($_POST["cityname"])) { //get the cityname from the form
+                $cityName = $_POST["cityname"];
+                //fetch data from citylist.json to find the id of the city
+                $jsonCityList = file_get_contents('script/citylist.json');
+                
+                //fetch jsoncitylist and convert it into an array
+                $arrayCityList = json_decode($jsonCityList, true); 
+                //echo var_dump($arrayCityList);
+                //loop through all the citynames untill you find a match and then return id
+                foreach( $arrayCityList as $value){
+                    if ($value['name'] == $cityName){
+                        $cityId = $value['id'];
+                    break;
+                    }
                 }
-            }
-            $apiLink = 'http://api.openweathermap.org/data/2.5/forecast?id=' . $cityId . '&units=metric&APPID=' . apiKey;
-            //fetch data from the weather app
-            $json_data = file_get_contents($apiLink);
+                
+                $apiLink = 'http://api.openweathermap.org/data/2.5/forecast?id=' . $cityId . '&units=metric&APPID=' . apiKey;
+                //fetch data from the weather app
+                $json_data = file_get_contents($apiLink);
 
-            $user_data = json_decode($json_data, true); //decode json into an array
-            $user_data_length = count($user_data['list']); //get the lenght of the list
-    ?>
+                $user_data = json_decode($json_data, true); //decode json into an array
+                $user_data_length = count($user_data['list']); //get the lenght of the list
+        ?>
             <!-- HTML TABLE SECTION -->
-            <h2 id="cityname"><?php echo $user_data['city']['name'] . ', ' . $user_data['city']['country']; ?></h2>
-    
-            <div id="wrapperbox">
+        <h2 id="cityname"><?php echo $user_data['city']['name'] . ', ' . $user_data['city']['country']; ?></h2>
+
+        <div id="wrapperbox">
             
             <?php
             //for loop
@@ -78,43 +79,44 @@
                     echo '</div>'; //end class day
                     echo '<p class="maintemp">' . $user_data['list'][strval($x)]['main']['temp'] . '°C</p>';
 
-                    echo '<table class="customers">';
-
-                    generateTR('Cloudiness', $user_data['list'][strval($x)]['weather']['0']['description']);
-                    generateTR('Humidity', $user_data['list'][strval($x)]['main']['humidity']);
-                    generateTR('Pressure', $user_data['list'][strval($x)]['main']['pressure']);
-                    generateTR('Wind', $user_data['list'][strval($x)]['wind']['speed']);
-                    
-                    echo '</table>'; //end table element
-                    echo '</div>'; //end div class box
-                } 
-            }
-        }
-        ?>
-        <?php 
-            function generateTR($dataName, $data){
-                $unit = '';
-                switch($dataName){
-                    case 'Cloudiness':
-                    break;
-                    case 'Humidity':
-                        $unit = '%';
-                    break;
-                    case 'Pressure':
-                        $unit = 'hpa';
-                    break;
-                    case 'Wind':
-                        $unit = 'm/s';
-                    break;
-                    default:
-                    break;
+                    ?>
+                    <table class="customers">
+                    <?php
+                        generateTR('Cloudiness', $user_data['list'][strval($x)]['weather']['0']['description']);
+                        generateTR('Humidity', $user_data['list'][strval($x)]['main']['humidity']);
+                        generateTR('Pressure', $user_data['list'][strval($x)]['main']['pressure']);
+                        generateTR('Wind', $user_data['list'][strval($x)]['wind']['speed']);
+                    ?>
+                    </table>
+        </div>
+            <?php
+                    } 
                 }
-                echo '<tr>';
-                echo '<td>' . $dataName . '</td>';
-                echo '<td class="$dataName">' . $data . $unit .'</td>';
-                echo '</tr>'; //end tr 4
             }
-        ?>
+            
+                function generateTR($dataName, $data){
+                    $unit = '';
+                    switch($dataName){
+                        case 'Cloudiness':
+                        break;
+                        case 'Humidity':
+                            $unit = '%';
+                        break;
+                        case 'Pressure':
+                            $unit = 'hpa';
+                        break;
+                        case 'Wind':
+                            $unit = 'm/s';
+                        break;
+                        default:
+                        break;
+                    }
+                    echo '<tr>';
+                    echo '<td>' . $dataName . '</td>';
+                    echo '<td class="$dataName">' . $data . $unit .'</td>';
+                    echo '</tr>'; //end tr 4
+                }
+            ?>
         </div>
     </div>
 </body>
