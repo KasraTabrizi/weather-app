@@ -1,3 +1,5 @@
+import { get } from "http";
+
 const apiKey = "ef560ab659e3a9522467daea187b0400";
 let cityId = 0;
 let apiLink = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&APPID=${apiKey}`;
@@ -10,7 +12,7 @@ document.getElementById("searchButton").addEventListener("click", () => {
     let cityName = document.getElementById("searchTerm").value;
     //parse json file with all the citynames and id
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
+    xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             cityObj = JSON.parse(this.responseText);
             if (cityName !== "") {
@@ -52,7 +54,7 @@ function printWeather(weatherObj) {
             document.getElementsByClassName("datum")[i].innerHTML = `${dateTime[0]}`;
             let date = new Date(dateTime[0]);
             document.getElementsByClassName("nameday")[i].innerHTML = `${days[date.getDay()]}`;
-            document.getElementsByClassName("hour")[i].innerHTML = `${dateTime[1].slice(0,2)} O'clock`;
+            document.getElementsByClassName("hour")[i].innerHTML = `${dateTime[1].slice(0, 2)} O'clock`;
             //get image icon
             let icon = data.weather[0].icon;
             document.getElementsByTagName("img")[i].src = `http://www.openweathermap.org/img/w/${icon}.png`;
