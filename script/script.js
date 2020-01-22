@@ -1,4 +1,4 @@
-import { get } from "http";
+//import { get } from "http";
 
 const apiKey = "ef560ab659e3a9522467daea187b0400";
 let cityId = 0;
