@@ -42,7 +42,6 @@ document.getElementById("searchButton").addEventListener("click", () => {
     xmlhttp.send();
 });
 
-
 function printWeather(weatherObj) {
     document.getElementById("cityname").innerHTML = `${weatherObj.city.name}, ${weatherObj.city.country}`;
     let i = 0;
