@@ -9,5 +9,5 @@ Used Express.js to make a server and deployed project on Heroku: https://shielde
 ## Screenhot
 
 <p align="center">
-    <img src="assets/images/weather-app.png" width="500" alt="arduino uno">
+    <img src="assets/images/weather-app.png" width="900" alt="weather app">
 </p>
